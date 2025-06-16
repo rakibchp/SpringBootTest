@@ -1,28 +1,33 @@
 package com.API_test.test.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.API_test.test.Entity.Employee;
+import lombok.*;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+public class EmployeeModel {
 
-
-@Entity
-public class Employee {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String company;
     private String designation;
 
-    // Adding getters and setters
+    public EmployeeModel(Employee employee) {
+        this.setId(employee.getId());
+        this.setName(employee.getName());
+        this.setCompany(employee.getCompany());
+        this.setDesignation(employee.getDesignation());
+    }
+
+    public EmployeeModel(String name, String company, String designation) {
+        this.setName(name);
+        this.setCompany(company);
+        this.setDesignation(designation);
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,9 +1,8 @@
 package com.API_test.test;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@com.API_test.test.SpringBootTest
 class TestApplicationTests {
 
 	@Test

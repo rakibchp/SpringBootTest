@@ -1,33 +1,20 @@
 package com.API_test.test.Service;
 
-import com.API_test.test.Model.Employee;
-import com.API_test.test.Repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.API_test.test.Model.EmployeeModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class EmployeeService {
+public interface EmployeeService {
+    
+    EmployeeModel save(EmployeeModel employee);
 
-    @Autowired
-    private EmployeeRepository repository;
+    EmployeeModel findById(Long id);
 
-    public List<Employee> getAllEmployees() {
-        return repository.findAll();
-    }
+    EmployeeModel deleteById(Long id);
 
-    public Optional<Employee> getEmployeeById(Long id) {
-        return repository.findById(id);
-    }
+    EmployeeModel update(Long id, EmployeeModel updatedEmployee);
 
-    public Employee saveEmployee(Employee employee) {
-        return repository.save(employee);
-    }
-
-    public void deleteEmployee(Long id) {
-        repository.deleteById(id);
-    }
-
+    List<EmployeeModel> findAll();
 }

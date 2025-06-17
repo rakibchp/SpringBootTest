@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h2>{{ editMode ? 'Edit' : 'Add' }} Employee</h2>
+
+
+<form (ngSubmit)="onSubmit()" #empForm="ngForm">
+  <div class="mb-3">
+    <label>Name</label>
+    <input class="form-control" [(ngModel)]="employee.name" name="name" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Company</label>
+    <input class="form-control" [(ngModel)]="employee.company" name="company" required>
+  </div>
+
+  <div class="mb-3">
+    <label>Designation</label>
+    <input class="form-control" [(ngModel)]="employee.designation" name="designation" required>
+  </div>
+
+    <button class="btn btn-success" type="submit">{{ editMode ? 'UPDATE' : 'SAVE' }}</button>
+    <a class="btn btn-secondary ms-2" [routerLink]="['/employees']">Cancel</a>
+</form>
+
+</div>

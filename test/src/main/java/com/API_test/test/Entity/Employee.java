@@ -24,12 +24,14 @@ public class Employee {
     private String name;
     private String company;
     private String designation;
+    private String department;
 
     public Employee(EmployeeModel employeeModel) {
         this.setId(employeeModel.getId());
         this.setName(employeeModel.getName());
         this.setCompany(employeeModel.getCompany());
         this.setDesignation(employeeModel.getDesignation());
+        this.setDepartment(employeeModel.getDepartment());
     }
 
     public Employee (){}
@@ -64,5 +66,13 @@ public class Employee {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

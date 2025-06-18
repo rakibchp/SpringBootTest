@@ -4,9 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { OnlyLettersDirective } from './directives/only-letters.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
 
 
 
@@ -15,13 +20,19 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     AppComponent,
     EmployeeListComponent,
     EmployeeFormComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CapitalizePipe,
+    OnlyLettersDirective,
+    EmployeeDetailComponent
   ],
   imports: [
     FormsModule,
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

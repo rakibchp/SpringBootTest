@@ -30,4 +30,13 @@ getAll(): Observable<{ data: Employee[] }> {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
+
+  updateDepartment(id: number, department: string) {
+  const payload = { department };
+  return this.http.patch(`http://localhost:8080/api/v1/employee/update-department/${id}`, payload);
+}
+
+
+
+  
 }

@@ -6,9 +6,6 @@ import com.API_test.test.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -79,7 +76,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee1 = employeeRepository.save(employee1);
         return new EmployeeModel(employee1);
     }
-
 
     @Override
     public EmployeeModel findById(Long id) {

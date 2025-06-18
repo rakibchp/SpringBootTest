@@ -14,18 +14,22 @@ public class EmployeeModel {
     private String name;
     private String company;
     private String designation;
+    private String department;
 
     public EmployeeModel(Employee employee) {
         this.setId(employee.getId());
         this.setName(employee.getName());
         this.setCompany(employee.getCompany());
         this.setDesignation(employee.getDesignation());
+        this.setDepartment(employee.getDepartment());
     }
 
-    public EmployeeModel(String name, String company, String designation) {
+    public EmployeeModel(String name, String company, String designation, String department) {
         this.setName(name);
         this.setCompany(company);
         this.setDesignation(designation);
+        this.setDesignation(designation);
+        this.setDepartment(department);
     }
 
     public Long getId() {
@@ -58,5 +62,25 @@ public class EmployeeModel {
 
     public void setDesignation(String designation) {
         this.designation = designation;
+    }
+
+    public String getDepartment() {
+        if (this.department != null) {
+            return this.department;
+        }
+        return department; // or return null; depending on your logic
+    }
+
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public boolean isPresent() {
+        return true;
+    }
+
+    public EmployeeModel get() {
+        return null;
     }
 }

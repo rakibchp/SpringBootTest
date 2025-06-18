@@ -1,0 +1,29 @@
+
+
+<div class="container mt-4">
+<form [formGroup]="employeeForm" (ngSubmit)="saveDepartment()"> 
+
+  <h2 class="mb-4">Employee Details</h2>
+  <p><strong>ID:</strong> {{ employee?.id }}</p>
+  <p><strong>Name:</strong> {{ employee?.name }}</p>
+  <p><strong>Company:</strong> {{ employee?.company }}</p>
+  <p><strong>Designation:</strong> {{ employee?.designation }}</p>
+   
+  <!-- Department Field -->
+    <div class="mb-3">
+      <label>Department</label>
+      <input class="form-control" type="text" formControlName="department" required />
+    </div>
+
+    
+  <!-- Buttons -->
+ <button class="btn btn-success" *ngIf="formChanged" type="submit" 
+ (click)="saveDepartment()" 
+ [disabled]="employeeForm.get('department')?.invalid">
+  Save
+</button>
+<a routerLink="/employees" class="btn btn-primary ms-2">Back to List</a>
+</form>
+
+</div>
+

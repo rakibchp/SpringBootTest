@@ -6,6 +6,7 @@ import com.API_test.test.Model.EmployeeModel;
 import com.API_test.test.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,13 +63,6 @@ public class EmployeeController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
     }
-
-
-
-
-
-
-
 
     // get employee by id
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -136,6 +130,24 @@ public class EmployeeController {
             response.setSuccess(false);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
+    }
+
+    // Create Controller Endpoint
+    @GetMapping("/list")
+    public ResponseEntity<Object> getPaginatedEmployees(
+            @RequestParam(defaultValue = "") String keyword,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size
+    ) {
+        Page<Employee> employeePage = employeeService.getEmployeesPaginated(keyword, page, size);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("data", employeePage.getContent());
+        response.put("currentPage", employeePage.getNumber());
+        response.put("totalItems", employeePage.getTotalElements());
+        response.put("totalPages", employeePage.getTotalPages());
+
+        return ResponseEntity.ok(response);
     }
 
 }

@@ -1,19 +1,36 @@
 <div class="container mt-4">
   <h2 class="title-spacing">Employee List</h2>
   <a class="btn btn-primary mb-3" [routerLink]="['/employees/new']">Add New</a>
+
+  <!-- employee search -->
+
+  <div class="mb-3">
+  <input
+  type="text"
+  [(ngModel)]="searchText"
+   (ngModelChange)="onSearch()"
+  class="form-control mb-3"
+  placeholder="Search existing employee..."
+/>
+
+</div>
+
+
   <table class="table table-bordered">
     <thead class="table-green">
       <tr><th>ID</th><th>Name</th><th>Company</th><th>Designation</th><th>Department</th><th>Actions</th></tr>
     </thead>
     <tbody>
-      <tr *ngFor="let emp of employees">
+      <!-- <tr *ngFor="let emp of employees" pagedEmployees > -->
+        <tr *ngFor="let emp of employees | filterEmployees:searchText"  >
+
         <td>
           <a [routerLink]="['/employees/details', emp.id]">{{ emp.id }}</a>
         </td>
         <td>{{ emp.name }}</td>
         <td>{{ emp.company }}</td>
         <td>{{ emp.designation }}</td>
-        <td>{{ emp.department }}</td>
+        <td [ngClass]="getDeptClass(emp.department)">{{ emp.department }}</td>
         
         <td>
           <a [routerLink]="['/employees/edit', emp.id]" class="btn btn-sm btn-warning">Edit</a>
@@ -27,4 +44,41 @@
 
     </tbody>
   </table>
+
+    <button class="btn btn-success" [routerLink]="['/welcome']">Welcome Page</button>
+
 </div>
+
+<!-- Pagination Controls -->
+
+<nav *ngIf="totalPages > 1">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="currentPage === 0">
+      <a class="page-link" (click)="changePage(currentPage - 1)">Previous</a>
+    </li>
+
+    <li
+      class="page-item"
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      [class.active]="i + 1 === currentPage"
+    >
+      <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+    </li>
+
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="changePage(currentPage + 1)">Next</a>
+    </li>
+  </ul>
+  </nav>
+
+  <nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><p>Showing
+  {{ currentPage * itemsPerPage + 1 }} -  {{ currentPage * itemsPerPage + employees.length }}
+  of {{ totalItems }} Employees
+ </p></li>
+
+    <!-- <li class="page-item"><p>Total of {{ totalItems }} Employees|</li>
+    <li class="page-item"><p>Showing: </p> {{ showingTo }}{{ showingFrom }}</li> -->
+  </ul>
+</nav>

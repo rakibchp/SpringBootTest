@@ -11,30 +11,42 @@
         type="text"
         formControlName="name"
         appOnlyLetters
+        [(ngModel)]="employee.name"
         required
       />
 
-    <div *ngIf="name && name.invalid && name.touched" class="text-danger">
-        <div *ngIf="name.errors?.['required']">Name is required.</div>
-        <div *ngIf="name.errors?.['pattern']">Only letters are allowed.</div>
-      </div>
+    <div *ngIf="submitted && employeeForm.invalid" class="text-danger">
+      Name is required.
+    </div>
     </div>
 
     <!-- Company Field -->
     <div class="mb-3">
       <label>Company</label>
-      <input class="form-control" type="text" formControlName="company" required />
+      <input class="form-control" type="text" formControlName="company" 
+      [(ngModel)]="employee.company"
+      required />
+
+      <div *ngIf="submitted && employeeForm.invalid" class="text-danger">
+      Company is required.
+    </div>
     </div>
 
     <!-- Designation Field -->
     <div class="mb-3">
       <label>Designation</label>
-      <input class="form-control" type="text" formControlName="designation" required />
+      <input class="form-control" type="text" formControlName="designation"
+      
+      [(ngModel)]="employee.designation"
+      required />
+      <div *ngIf="submitted && employeeForm.invalid" class="text-danger">
+      Designation is required.
+    </div>
     </div>
 
-
+<!-- [disabled]="employeeForm.invalid" -->
     <!-- Buttons -->
-    <button class="btn btn-success" type="submit" [disabled]="employeeForm.invalid">
+    <button class="btn btn-success" type="submit">
       {{ editMode ? 'UPDATE' : 'SAVE' }}
     </button>
 

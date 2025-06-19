@@ -36,6 +36,15 @@ getAll(): Observable<{ data: Employee[] }> {
   return this.http.patch(`http://localhost:8080/api/v1/employee/update-department/${id}`, payload);
 }
 
+getPaginatedEmployees(keyword: string = '', page: number = 0, size: number =5): Observable<any> {
+  const params = {
+    keyword: keyword?? '', // Ensure keyword is not null
+    page: page.toString(),
+    size: size.toString()
+  };
+  return this.http.get<any>(`${this.apiUrl}/list`, { params });
+}
+
 
 
   

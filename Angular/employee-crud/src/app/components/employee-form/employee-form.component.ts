@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { EmployeeService } from "src/app/services/employee.service";
 import { Employee } from "src/app/models/employee";
 import { CapitalizePipe } from 'src/app/pipes/capitalize.pipe';
@@ -15,6 +15,7 @@ export class EmployeeFormComponent implements OnInit {
   employee: Employee = { name: '', company: '', designation: '' };
   employeeForm!: FormGroup;
   editMode = false;
+  submitted = false;
 
   constructor(
     private service: EmployeeService,
@@ -69,6 +70,12 @@ export class EmployeeFormComponent implements OnInit {
     }
 
   onSubmit(): void {
+
+      // onSubmit(form: NgForm) {
+    this.submitted = true;
+    // if (.invalid) {
+    //   return; //  Stop if form is invalid
+    // }
    
     if (this.employeeForm.invalid) return;
 

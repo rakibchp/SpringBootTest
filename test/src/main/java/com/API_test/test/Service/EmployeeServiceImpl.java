@@ -4,6 +4,9 @@ import com.API_test.test.Entity.Employee;
 import com.API_test.test.Model.EmployeeModel;
 import com.API_test.test.Repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,8 +59,16 @@ public class EmployeeServiceImpl implements EmployeeService {
                 return new EmployeeModel(savedEmployee);
     }
 
+    @Override
+    public Page<Employee> getEmployeesPaginated(String keyword, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
 
-
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return employeeRepository.findAllByOrderByIdDesc(pageable);
+        } else {
+            return employeeRepository.search(keyword.trim(), pageable);
+        }
+    }
 
     @Override
     public List<EmployeeModel> findAll() {

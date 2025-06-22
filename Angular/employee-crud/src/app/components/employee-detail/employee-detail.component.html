@@ -16,12 +16,57 @@
     </div>
   </div>
 
-  <!-- Department Field -->
-    <div class="mb-3">
-      <label>Department</label>
-      <input class="form-control" type="text" formControlName="department" required />
-    </div>
+<!-- Department Field -->
+<div class="mb-3">
+  <label>Department</label>
+  <div class="d-flex align-items-center">
+    
+    <!-- <button type="button" class="btn btn-outline-primary" (click)="openDepartmentModal()" data-bs-toggle="modal" data-bs-target="#departmentModal">
+      Choose
+    </button> -->
+    <!-- readonly -->
+    <input class="form-control me-2" type="text" formControlName="department" 
+    (click)="openDepartmentModal()" data-bs-toggle="modal" data-bs-target="#departmentModal"
+     />
+  </div>
+</div>
 
+<!-- Department Modal -->
+<div class="modal fade" id="departmentModal" tabindex="-1" aria-labelledby="departmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="departmentModalLabel">Select Department</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Reactive Form Search Control -->
+        <input
+          type="text"
+          class="form-control mb-3"
+          placeholder="Search departments..."
+          [formControl]="searchControl"
+        />
+
+        <ul class="list-group" style="max-height: 300px; overflow-y: auto;">
+          <li *ngFor="let dept of filteredDepartments$ | async"
+              class="list-group-item list-group-item-action"
+              (click)="selectDepartment(dept)"
+              style="cursor: pointer;">
+            {{ dept }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
     
   <!-- Buttons -->
  <button class="btn btn-success" *ngIf="formChanged" type="submit" 
@@ -29,7 +74,9 @@
  [disabled]="employeeForm.get('department')?.invalid">
   Save
 </button>
-<a routerLink="/employees" class="btn btn-primary ms-2">Back to List</a>
+<!-- <a routerLink="/employees" class="btn btn-primary ms-2">Back to List</a> -->
+ <button type="button" class="btn btn-primary ms-2" (click)="goBack()">Back to List</button>
+
 </form>
 
 </div>

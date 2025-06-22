@@ -21,8 +21,8 @@ import { EmployeeDetailComponent } from './components/employee-detail/employee-d
     EmployeeFormComponent,
     // WelcomeComponent,
     CapitalizePipe,
-    OnlyLettersDirective,
-    EmployeeDetailComponent,
+    OnlyLettersDirective
+    
     
   ],
   imports: [
@@ -32,7 +32,8 @@ import { EmployeeDetailComponent } from './components/employee-detail/employee-d
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    EmployeeDetailComponent
     
   ],
   providers: [],

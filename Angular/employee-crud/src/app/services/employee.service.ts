@@ -45,6 +45,11 @@ getPaginatedEmployees(keyword: string = '', page: number = 0, size: number =5): 
   return this.http.get<any>(`${this.apiUrl}/list`, { params });
 }
 
+getDepartments(page: number = 0, size: number = 10): Observable<string[]> {
+  return this.http.get<string[]>(`${this.apiUrl}/departments?page=${page}&size=${size}`);
+}
+
+
 
 
   

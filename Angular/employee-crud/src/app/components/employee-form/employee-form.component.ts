@@ -37,7 +37,10 @@ export class EmployeeFormComponent implements OnInit {
   name: ['', [Validators.required, Validators.pattern(/^[A-Za-z ]+$/)]],
   company: ['', Validators.required],
   designation: ['', Validators.required],
-  department: ['']
+  department: [''],
+  grade: [null],
+  salary: [null],
+  joiningDate: ['']
   });
 
     const id = this.route.snapshot.paramMap.get('id');

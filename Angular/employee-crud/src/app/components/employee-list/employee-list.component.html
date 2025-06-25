@@ -23,6 +23,10 @@
         <th>Company</th>
         <th>Designation</th>
         <th>Department</th>
+        <th>Grade</th>
+        <th>Salary</th>
+        <th>Joining Date</th>
+
         <th>Actions</th>
       </tr>
     </thead>
@@ -33,6 +37,10 @@
         <td>{{ emp.company }}</td>
         <td>{{ emp.designation }}</td>
         <td [ngClass]="getDeptClass(emp.department)">{{ emp.department }}</td>
+        <td>{{ emp.grade }}</td>
+        <td>{{ emp.salary | number:'1.2-2' }}</td>
+        <td>{{ emp.joiningDate | date:'dd-MM-yyyy' }}</td>
+
         <td>
           <a [routerLink]="['/employees/edit', emp.id]" class="btn btn-sm btn-warning">Edit</a>
           <button class="btn btn-sm btn-danger ms-2" (click)="deleteEmployee(emp.id!)">Delete</button>

@@ -3,6 +3,9 @@ package com.API_test.test.Model;
 import com.API_test.test.Entity.Employee;
 import lombok.*;
 
+import javax.persistence.Column;
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +18,11 @@ public class EmployeeModel {
     private String company;
     private String designation;
     private String department;
+    private int grade;
+    private Double salary;
+    @Column(name = "joining_date")
+    private LocalDate joiningDate;
+
 
     public EmployeeModel(Employee employee) {
         this.setId(employee.getId());
@@ -83,4 +91,32 @@ public class EmployeeModel {
     public EmployeeModel get() {
         return null;
     }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
+
+    public LocalDate getJoiningDate() {
+        return joiningDate;
+    }
+
+    public void setJoiningDate(LocalDate joiningDate) {
+        this.joiningDate = joiningDate;
+    }
+
+
+
 }

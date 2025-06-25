@@ -3,10 +3,8 @@ package com.API_test.test.Entity;
 import com.API_test.test.Model.EmployeeModel;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -25,6 +23,11 @@ public class Employee {
     private String company;
     private String designation;
     private String department;
+    private int grade;
+    private Double salary;
+    @Column(name = "joining_date")
+    private LocalDate joiningDate;
+
 
     public Employee(EmployeeModel employeeModel) {
         this.setId(employeeModel.getId());
@@ -75,4 +78,31 @@ public class Employee {
     public void setDepartment(String department) {
         this.department = department;
     }
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
+    public LocalDate getJoiningDate() {
+        return joiningDate;
+    }
+
+    public void setJoiningDate(LocalDate joiningDate) {
+        this.joiningDate = joiningDate;
+    }
+
+
+
 }

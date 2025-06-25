@@ -1,7 +1,7 @@
 package com.API_test.test.Controller;
 
 import com.API_test.test.Entity.Employee;
-import com.API_test.test.Model.ApiResponse;
+import com.API_test.test.apiModel.ApiResponse;
 import com.API_test.test.Model.EmployeeModel;
 import com.API_test.test.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;

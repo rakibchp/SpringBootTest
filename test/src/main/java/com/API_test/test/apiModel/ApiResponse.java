@@ -1,4 +1,4 @@
-package com.API_test.test.Model;
+package com.API_test.test.apiModel;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
